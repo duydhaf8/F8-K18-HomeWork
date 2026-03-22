@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Bài 4 - Danh sách công việc</title>
+</head>
+<body>
+
+<h2>My To-do List</h2>
+
+<input type="text" id="task-input" placeholder="your task">
+<button id="add-btn">Add</button>
+
+<ul id="task-list"></ul>
+
+<script>
+    const taskInput = document.getElementById('task-input');
+    const btnAdd = document.getElementById('add-btn');
+    const taskList = document.getElementById('task-list');
+
+    btnAdd.addEventListener('click', function() {
+        const taskValue = taskInput.value.trim();
+
+        if (taskValue === '') {
+            return;
+        }
+
+        const newListItem = document.createElement('li');
+        newListItem.textContent = taskValue;
+
+        taskList.appendChild(newListItem);
+
+        taskInput.value = '';
+    });
+</script>
+</body>
+</html>

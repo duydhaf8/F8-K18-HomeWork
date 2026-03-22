@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Bài 3</title>
+</head>
+<body>
+
+<input type="text" id="text-input" placeholder="Your content">
+<button id="add-btn">Add</button>
+
+<div id="result-area"></div>
+
+<script>
+    const inputField = document.getElementById('text-input');
+    const btnAdd = document.getElementById('add-btn');
+    const resultArea = document.getElementById('result-area');
+
+    btnAdd.addEventListener('click', function() {
+        const inputValue = inputField.value;
+
+        if (inputValue.trim() === '') {
+            alert('Invalid input');
+            return;
+        }
+
+        const newParagraph = document.createElement('p');
+
+        newParagraph.textContent = inputValue;
+
+        resultArea.appendChild(newParagraph);
+
+        inputField.value = '';
+    });
+</script>
+</body>
+</html>

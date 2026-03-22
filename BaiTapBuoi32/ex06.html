@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Bài 6 - Xóa Item</title>
+</head>
+<body>
+
+<h2>List</h2>
+
+<ul id="my-list">
+    <li>HTML <button class="delete-btn">X</button></li>
+    <li>CSS <button class="delete-btn">X</button></li>
+    <li>JavaScript <button class="delete-btn">X</button></li>
+</ul>
+
+<script>
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+
+    deleteButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const liItem = this.parentElement;
+            liItem.remove();
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Bài 7 - Todo List Có Trạng Thái</title>
+    <style>
+        .completed span {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            list-style-type: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<h2>Todo-list</h2>
+
+<input type="text" id="task-input" placeholder="Your task">
+<button id="add-btn">Add</button>
+
+<ul id="todo-list">
+
+</ul>
+
+<script>
+    const taskInput = document.getElementById('task-input');
+    const btnAdd = document.getElementById('add-btn');
+    const todoList = document.getElementById('todo-list');
+
+    btnAdd.addEventListener('click', function() {
+        const taskValue = taskInput.value.trim();
+        if (taskValue === '') {
+            alert('Invalid input');
+            return;
+        }
+
+        const newLi = document.createElement('li');
+        newLi.innerHTML = `<span>${taskValue}</span> <button class="delete-btn">Xóa</button>`;
+
+        todoList.appendChild(newLi);
+        taskInput.value = '';
+        taskInput.focus();
+    });
+
+    todoList.addEventListener('click', function(event) {
+        const clickedElement = event.target;
+
+        if (clickedElement.classList.contains('delete-btn')) {
+            const liItem = clickedElement.parentElement;
+            liItem.remove();
+        }
+        else if (clickedElement.tagName === 'SPAN') {
+            const liItem = clickedElement.parentElement;
+            liItem.classList.toggle('completed');
+        }
+        else if (clickedElement.tagName === 'LI') {
+            clickedElement.classList.toggle('completed');
+        }
+    });
+</script>
+</body>
+</html>

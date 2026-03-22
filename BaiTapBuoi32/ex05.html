@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Bài 5 - Đổi màu Item</title>
+    <style>
+        .text-red {
+            color: red;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>List</h2>
+
+<ul id="my-list">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+</ul>
+
+<script>
+    const listItems = document.querySelectorAll('li');
+
+    listItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            this.classList.toggle('text-red');
+        });
+    });
+</script>
+</body>
+</html>
